@@ -89,7 +89,7 @@ for(let i = 0; i<squadre.length; i++){
 
     // console.log(extractValue(squadre,"nome","falliSubiti"));
 
-// 3. versione ciclo for e destrutturazione
+// 3. versione con ciclo for e destrutturazione
 
 for (let i=0; i < squadre.length ; ++i){
     const arrFalliSubiti = [];
