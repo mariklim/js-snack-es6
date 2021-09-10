@@ -9,37 +9,42 @@
 //1. Creare un array di oggetti di squadre di calcio. Ogni squadra avrà diverse proprietà: nome, punti fatti, falli subiti.
 
 // 2.Generare numeri random al posto degli 0 nelle proprietà:
-const GetNumRandom = (min, max) => Math.floor(Math.random() * (max - min) ) + min;
+const GetNumRandom = (min, max) => Math.floor(Math.random() * (max - min +1 ) ) + min;
 
 
 const squadre = [
     {
         "nome" : "squadra-1",
-        "puntiFatti": GetNumRandom(1,50) ,
-        "falliSubiti": GetNumRandom(1,50) 
+        "puntiFatti": 0 ,
+        "falliSubiti": 0 
     },
     {
         "nome" : "squadra-2",
-        "puntiFatti": GetNumRandom(1,50) ,
-        "falliSubiti": GetNumRandom(1,50) 
+        "puntiFatti": 0 ,
+        "falliSubiti": 0 
     },
     {
         "nome" : "squadra-3",
-        "puntiFatti":GetNumRandom(1,50) ,
-        "falliSubiti": GetNumRandom(1,50) 
+        "puntiFatti":0 ,
+        "falliSubiti": 0 
     },
     {
         "nome" : "squadra-4",
-        "puntiFatti": GetNumRandom(1,50) ,
-        "falliSubiti": GetNumRandom(1,50) 
+        "puntiFatti":0,
+        "falliSubiti": 0 
     },
 ];
 
+for(let i = 0; i<squadre.length; i++){
+    squadre[i].puntiFatti = GetNumRandom(1,50);
+    squadre[i].falliSubiti = GetNumRandom(1,50);
+
+}
 
 //3. Infine usando la destrutturazione creiamo un nuovo array i cui elementi contengono solo nomi e falli subiti e stampiamo tutto in console.
 
 
-//1. variante senza il ciclo:
+//1. variante senza il ciclo solo destrutturazione passo per passo:
 
 
 // const arrFalliSubiti = [];
@@ -69,19 +74,29 @@ const squadre = [
 // 2. versione con la funzione "extractValue"
 // program to extract value as an array from an array of objects
 
-    function extractValue(arr, prop1, prop2) {
+    // function extractValue(arr, prop1, prop2) {
 
-      let arrFalliSubiti = [];
+    //   let arrFalliSubiti = [];
     
-        for (let i=0; i < arr.length ; ++i) {
+    //     for (let i=0; i < arr.length ; ++i) {
     
-            // extract value from property
-            arrFalliSubiti.push(`nome della squadra: ${arr[i][prop1]}`);
-            arrFalliSubiti.push(`falli subiti: ${arr[i][prop2]}`);
-            // arrFalliSubiti.push(arr[i][prop1]);
-            // arrFalliSubiti.push(arr[i][prop2]);
-        }
-        return arrFalliSubiti;
-    }
+    //         // extract value from property
+    //         arrFalliSubiti.push(`nome della squadra: ${arr[i][prop1]}`);
+    //         arrFalliSubiti.push(`falli subiti: ${arr[i][prop2]}`);
+    //     }
+    //     return arrFalliSubiti;
+    // }
 
-    console.log(extractValue(squadre,"nome","falliSubiti"));
+    // console.log(extractValue(squadre,"nome","falliSubiti"));
+
+// 3. versione ciclo for e destrutturazione
+
+for (let i=0; i < squadre.length ; ++i){
+    const arrFalliSubiti = [];
+    const {nome, falliSubiti} = squadre[i];
+    arrFalliSubiti.push({
+        nome,
+        falliSubiti
+    });
+    console.log(arrFalliSubiti);
+}
